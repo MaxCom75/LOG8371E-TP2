@@ -1,0 +1,42 @@
+name: log8371-tp2
+services:
+  db:
+    image: docker.io/library/postgres:16.9-bookworm@sha256:253815cf7579ffa05e1673d92e78d37273e61be0e4414e9a1449337d7925be94
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: lab-only-password
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U keycloak -d keycloak]
+      interval: 2s
+      timeout: 3s
+      retries: 60
+  kc:
+    image: quay.io/keycloak/keycloak:24.0.5@sha256:f8ade94c1d0ad2f2fa7734a455fee5392764f402c43ca35e9af6bf63a2541dc9
+    command: [start-dev]
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://db:5432/keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: lab-only-password
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: lab-only-admin
+    ports:
+      - 127.0.0.1:8080:8080
+    depends_on:
+      db:
+        condition: service_healthy
+  proxy:
+    image: docker.io/library/python:3.12.10-slim-bookworm@sha256:fd95fa221297a88e1cf49c55ec1828edd7c5a428187e67b5d1805692d11588db
+    command: [python, /lab/chaos/proxy.py]
+    environment:
+      UPSTREAM: http://kc:8080
+    volumes:
+      - ./chaos:/lab/chaos:ro
+    ports:
+      - 127.0.0.1:8081:8081
+      - 127.0.0.1:9090:9090
+volumes:
+  db-data:
