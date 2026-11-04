@@ -1,10 +1,11 @@
 
 CLAIM CARD
  Operation     : POST /realms/perf/protocol/openid-connect/token
- Workload      : 10 users , think time 0.1-0.3 s, duration 35 s, cache
-                 state WARM: one user (user1) for every request, Keycloak
-                 and DB up for the whole run, user1 already authenticated
-                 since this Keycloak start by previous runs
+ Workload      : 10 users , think time 0.1-0.3 s, duration 35 s (5 s warmup
+                 and 30 s run time), cache state WARM: one user (user1) for
+                 every request, Keycloak and DB up for the whole run, user1
+                 already authenticated since this Keycloak start by previous
+                 runs
  Statistic     : mean of the three runs are
                   p50 = 237.3
                   p95 = 278.7
