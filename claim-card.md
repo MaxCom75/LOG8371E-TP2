@@ -5,8 +5,13 @@ CLAIM CARD
                  state WARM: one user (user1) for every request, Keycloak
                  and DB up for the whole run, user1 already authenticated
                  since this Keycloak start by previous runs
- Statistic     : p50, p95, p99, mean latency, and error rate, percentiles
-                 by linear interpolation at (n-1)*p
+ Statistic     : mean of the three runs are
+                  p50 = 237.3
+                  p95 = 278.7
+                  p99 = 300.9
+                  mean = 239.9
+                  error rate = 0.0%
+                 percentiles estimated with linear interpolation at (n-1)*p
  n observed    : run 1 = 662, run 2 = 668, run 3 = 662 (total 1992)
  Threshold     : error rate stays below 1 % over each 30 s window
  Decision rule : ship if every repetition meets the error-rate threshold,
