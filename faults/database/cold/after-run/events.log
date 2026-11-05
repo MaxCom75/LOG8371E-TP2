@@ -1,0 +1,2 @@
+2026-11-05T19:57:05.982+00:00 |       - | locust start user=user30 host=http://127.0.0.1:8080 duration=20s warmup=0s
+2026-11-05T19:57:26.696+00:00 |   19.74s | locust exited

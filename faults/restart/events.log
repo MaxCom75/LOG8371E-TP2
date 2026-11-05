@@ -1,0 +1,5 @@
+2026-11-05T19:33:27.520+00:00 |       - | locust start user=user1 host=http://127.0.0.1:8080 duration=60s warmup=5s
+2026-11-05T19:33:43.464+00:00 |   15.02s | issue: docker compose restart kc
+2026-11-05T19:33:44.529+00:00 |   16.09s | return: docker compose restart kc (exit 0)
+2026-11-05T19:34:28.350+00:00 |   59.91s | locust exited
+2026-11-05T19:34:28.444+00:00 |   60.00s | derived: first failure after injection at 15.266894 s, first success after restart at 26.68336 s

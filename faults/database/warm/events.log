@@ -1,0 +1,10 @@
+2026-11-05T19:54:43.302+00:00 |    0.00s | issue: docker compose restart kc
+2026-11-05T19:54:44.128+00:00 |    0.83s | return: docker compose restart kc (exit 0)
+2026-11-05T19:54:50.505+00:00 |    7.20s | kc ready after restart
+2026-11-05T19:55:06.295+00:00 |       - | locust start user=user1 host=http://127.0.0.1:8080 duration=60s warmup=5s
+2026-11-05T19:55:27.194+00:00 |   20.03s | issue: docker compose stop db
+2026-11-05T19:55:27.656+00:00 |   20.49s | return: docker compose stop db (exit 0)
+2026-11-05T19:55:46.274+00:00 |   39.11s | issue: docker compose start db
+2026-11-05T19:55:46.717+00:00 |   39.56s | return: docker compose start db (exit 0)
+2026-11-05T19:55:46.717+00:00 |   39.56s | db down window: stop issued 20.03 s, start issued 39.11 s (19.08 s)
+2026-11-05T19:56:07.011+00:00 |   59.85s | locust exited

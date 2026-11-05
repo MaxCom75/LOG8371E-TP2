@@ -1,0 +1,13 @@
+2026-11-05T19:56:15.476+00:00 |    0.00s | issue: docker compose restart kc
+2026-11-05T19:56:16.262+00:00 |    0.79s | return: docker compose restart kc (exit 0)
+2026-11-05T19:56:22.643+00:00 |    7.17s | kc ready after restart
+2026-11-05T19:56:38.407+00:00 |       - | locust start user=user1 host=http://127.0.0.1:8080 duration=60s warmup=5s
+2026-11-05T19:56:59.300+00:00 |   20.03s | issue: docker compose stop db
+2026-11-05T19:56:59.775+00:00 |   20.51s | return: docker compose stop db (exit 0)
+2026-11-05T19:56:59.776+00:00 |   20.51s | user switch: user1 -> user30 (new requests only)
+2026-11-05T19:57:05.398+00:00 |   26.13s | STOP CONDITION: sustained errors in [21, 26) s {21: [0, 0], 22: [0, 0], 23: [0, 0], 24: [10, 10], 25: [50, 50]}
+2026-11-05T19:57:05.398+00:00 |   26.13s | issue: docker compose start db
+2026-11-05T19:57:05.707+00:00 |   26.44s | return: docker compose start db (exit 0)
+2026-11-05T19:57:05.707+00:00 |   26.44s | db down window: stop issued 20.03 s, start issued 26.13 s (6.10 s)
+2026-11-05T19:57:05.708+00:00 |   26.44s | locust stopped (stop condition)
+2026-11-05T19:57:05.968+00:00 |   26.70s | db healthy; separate 20 s after-run (load was stopped by the stop condition)

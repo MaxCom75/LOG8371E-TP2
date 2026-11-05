@@ -1,0 +1,4 @@
+2026-11-05T19:37:50.838+00:00 |       - | locust start user=user1 host=http://127.0.0.1:8081 duration=60s warmup=5s
+2026-11-05T19:38:11.770+00:00 |   20.03s | control arm: no injection at 20 s
+2026-11-05T19:38:31.802+00:00 |   40.06s | control arm: 40 s boundary
+2026-11-05T19:38:51.565+00:00 |   59.83s | locust exited

@@ -1,0 +1,4 @@
+2026-11-05T19:38:52.225+00:00 |       - | locust start user=user1 host=http://127.0.0.1:8081 duration=60s warmup=5s
+2026-11-05T19:39:13.150+00:00 |   20.06s | proxy delay {"milliseconds": 300, "seconds": 20} -> HTTP 204
+2026-11-05T19:39:33.093+00:00 |   40.00s | delay expires (proxy auto-expiry, 20 s after injection)
+2026-11-05T19:39:52.957+00:00 |   59.87s | locust exited

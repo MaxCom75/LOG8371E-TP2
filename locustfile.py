@@ -48,6 +48,14 @@ def close_raw(environment, **kwargs):
     writer = None
 
 
+def username():
+    """USERNAME, or the content of USERNAME_FILE once that file exists (mid-run user switch)."""
+    switch = os.environ.get('USERNAME_FILE')
+    if switch and os.path.exists(switch):
+        return Path(switch).read_text().strip()
+    return os.environ.get('USERNAME', 'user1')
+
+
 class Login(HttpUser):
     wait_time = between(0.1, 0.3)
 
@@ -55,5 +63,5 @@ class Login(HttpUser):
     def authenticate(self):
         self.client.post('/realms/perf/protocol/openid-connect/token', data={
             'grant_type': 'password', 'client_id': 'perf-client',
-            'username': os.environ.get('USERNAME', 'user1'),
+            'username': username(),
             'password': 'lab-password'}, name='POST /token', timeout=5)
